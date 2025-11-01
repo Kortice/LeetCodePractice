@@ -8,28 +8,16 @@
 function groupAnagrams(strs: string[]): string[][] {
   const map = new Map<string, string[]>()
 
-  for (let k in strs) {
-    let str = strs[k]
-    let charArray: string[] = [] //提取出单个字符
-    for (let i = 0; i < str.length; i++) {
-      charArray.push(str[i])
-    }
-    charArray.sort() // 对字符串本身按字符排序 当作 map 的 key
+  for (const str of strs) {
+    // 对字符串按字符排序，当成 map 的 key
+    const key = [...str].sort().join('')
 
-    const mapKey = charArray.toString()
-    if (map.has(mapKey)) {
-      map.get(mapKey)?.push(str)
+    if (!map.has(key)) {
+      map.set(key, [str])
     } else {
-      map.set(mapKey, [str])
+      map.get(key)?.push(str)
     }
-
   }
 
-  const res: string[][] = []
-
-  map.forEach((value) => {
-    res.push(value)
-  })
-
-  return res
+  return Array.from(map.values()) 
 }
