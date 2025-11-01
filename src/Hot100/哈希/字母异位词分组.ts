@@ -28,7 +28,6 @@ function groupAnagrams(strs: string[]): string[][] {
   const res: string[][] = []
 
   map.forEach((value) => {
-    console.log(value)
     res.push(value)
   })
 
