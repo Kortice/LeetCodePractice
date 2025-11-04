@@ -16,7 +16,7 @@ function moveZeroes(nums: number[]): void {
     fast++
   }
 
-  for (; slow<nums.length; slow++) {
+  for (; slow < nums.length; slow++) {
     nums[slow] = 0
   }
 }
