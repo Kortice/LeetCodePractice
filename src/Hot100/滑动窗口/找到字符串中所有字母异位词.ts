@@ -26,8 +26,6 @@ function findAnagrams(s: string, p: string): number[] {
       }
     }
 
-    console.log(s.substring(left, right))
-
     while (right - left >= p.length) {
 
       if (valid === need.size) {
