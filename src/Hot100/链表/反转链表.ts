@@ -11,17 +11,31 @@ class ListNode {
   }
 }
 
+// 迭代
+// function reverseList(head: ListNode | null): ListNode | null {
+//   let pre = null, cur = head, nxt = head?.next
 
+//   while (cur !== null) {
+//     cur.next = pre
+//     pre = cur
+//     cur = nxt!
+//     if (nxt !== null)
+//       nxt = nxt?.next
+//   }
+
+//   return pre
+// }
+
+// 递归
 function reverseList(head: ListNode | null): ListNode | null {
-  let pre = null, cur = head, nxt = head?.next
-
-  while (cur !== null) {
-    cur.next = pre
-    pre = cur
-    cur = nxt!
-    if (nxt !== null)
-      nxt = nxt?.next
+  // base case
+  if (head === null || head.next === null) {
+    return head
   }
 
-  return pre
+  const last = reverseList(head.next)
+  head.next.next = head
+  head.next = null
+
+  return last
 }
