@@ -5,16 +5,17 @@
  */
 
 function majorityElement(nums: number[]): number {
-  const map = new Map<number, number>()
-  const n = nums.length
-  const target = Math.floor(n / 2)
-
+  let hp = 0
+  let ans = -1
   for (const num of nums) {
-    map.set(num, (map.get(num) || 0) + 1)
-    if (map.get(num) as number > target) {
-      return num
+    if (hp === 0) {
+      [ans, hp] = [num, 1]
+    } else if (ans === num) {
+      hp++
+    } else {
+      hp--
     }
   }
 
-  return -1
+  return ans
 };
